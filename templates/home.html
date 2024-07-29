@@ -1,0 +1,194 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CropMate</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <nav id="navbar" class="bg-green-800 p-4 shadow-lg transition duration-300">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="{% static 'logo.png' %}" alt="CropMate Logo" class="w-12 h-12 mr-2"> 
+                <span class="text-white text-2xl font-bold">CropMate</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#about" class="text-white hover:text-gray-200 transition duration-300">About</a>
+                <a href="#features" class="text-white hover:text-gray-200 transition duration-300">Features</a>
+                <a href="#calculator" class="text-white hover:text-gray-200 transition duration-300">Calculator</a>
+                <a href="#contact" class="text-white hover:text-gray-200 transition duration-300">Contact</a>
+                <form method="POST" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300">
+                        Logout
+                    </button>
+                </form>
+            </div>
+            <!-- Hamburger Icon -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-green-700">
+            <div class="flex flex-col space-y-2 p-4">
+                <a href="#about" class="text-white hover:text-gray-200 transition duration-300">About</a>
+                <a href="#features" class="text-white hover:text-gray-200 transition duration-300">Features</a>
+                <a href="#calculator" class="text-white hover:text-gray-200 transition duration-300">Calculator</a>
+                <a href="#contact" class="text-white hover:text-gray-200 transition duration-300">Contact</a>
+                <form method="POST" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300">
+                        Logout
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <!-- Welcome Section -->
+    <section class="flex flex-col items-center justify-center h-screen text-center bg-cover bg-center relative" style="background-image: url('https://img.freepik.com/premium-photo/agriculture-crop-farming-social-media-banner-template-farming-profession-vector-design_732449-27839.jpg?w=996');">
+        <div class="absolute inset-0 bg-green-900 opacity-70"></div> <!-- Darker green overlay for texture -->
+        <div class="relative z-10 p-4 mt-[-900px]"> <!-- Increased negative margin-top -->
+            <h1 class="text-8xl font-extrabold text-yellow-400 mb-2 drop-shadow-lg">Welcome to CropMate</h1>
+            <p class="text-4xl text-white mb-6 drop-shadow-md">Calculate the amount of seeds needed for your crops based on your land's area and seed density.</p>
+            <a href="#calculator" class="bg-yellow-600 hover:bg-yellow-700 text-black font-bold py-5 px-10 rounded-lg transition duration-200 text-xl shadow-lg mt-10">Calculate Now</a> <!-- Increased margin-top -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+<section class="container mx-auto my-16 p-6 bg-gradient-to-r from-green-300 to-green-500 shadow-lg rounded-lg flex flex-col md:flex-row items-center" id="about">
+    <div class="md:w-1/2 p-4">
+        <img src="https://payload.cargocollective.com/1/9/316317/13607080/Farm-2.gif" alt="Farming GIF" class="w-full rounded-lg shadow-lg animate-fade">
+    </div>
+    <div class="md:w-1/2 p-4">
+        <h2 class="text-4xl font-bold text-center mb-4 text-white drop-shadow-lg">About Our Website</h2>
+        <p class="text-lg text-white text-center mb-6 drop-shadow-md">
+            Our Crop Seed Calculator is designed to assist farmers and gardeners in determining the optimal amount of seeds required for their crops. By analyzing the area of the land and the seed density, users can make informed decisions to maximize their yield while minimizing waste.
+        </p>
+        <div class="text-center">
+            <a href="#calculator" class="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-semibold py-3 px-8 rounded-lg transition duration-200 text-lg shadow-lg">
+                Learn More
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- Features Section -->
+<section class="container mx-auto my-16 p-6" id="features">
+    <h2 class="text-4xl font-bold text-center mb-8 text-green-800 drop-shadow-lg">Features</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="card bg-green-100 shadow-lg rounded-lg p-6 text-center animate-fade-left">
+            <img src="https://media0.giphy.com/media/3og0ILgFOEXIL8Bsn6/source.gif" alt="User-Friendly Interface" class="w-full h-48 object-cover rounded-md mb-4">
+            <h3 class="text-xl font-semibold mb-2 text-green-800">User-Friendly Interface</h3>
+            <p class="text-gray-700">Our calculator is easy to use, ensuring that anyone can calculate their seed requirements with minimal effort.</p>
+        </div>
+        <div class="card bg-green-100 shadow-lg rounded-lg p-6 text-center animate-fade-right">
+            <img src="https://i.pinimg.com/originals/c5/c4/9c/c5c49c240501275aa45fc9bf8abce04e.gif" alt="Accurate Calculations" class="w-full h-48 object-cover rounded-md mb-4">
+            <h3 class="text-xl font-semibold mb-2 text-green-800">Accurate Calculations</h3>
+            <p class="text-gray-700">We use advanced algorithms to ensure that your seed calculations are precise and reliable.</p>
+        </div>
+        <div class="card bg-green-100 shadow-lg rounded-lg p-6 text-center animate-fade-left">
+            <img src="https://cdn.dribbble.com/users/4137687/screenshots/11943319/media/e373c660a94fea92668e31ff30c5ed55.gif" alt="Responsive Design" class="w-full h-48 object-cover rounded-md mb-4">
+            <h3 class="text-xl font-semibold mb-2 text-green-800">Responsive Design</h3>
+            <p class="text-gray-700">Our website is designed to work seamlessly on all devices, whether you're on a computer or a mobile device.</p>
+        </div>
+    </div>
+</section>
+
+    <!-- Enhanced Calculator Section -->
+    <section id="calculator" class="container mx-auto my-16 p-6">
+        <div class="container mx-auto p-6 bg-green-100 rounded-lg shadow-md max-w-4xl"> <!-- Increased max-width -->
+            <h2 class="text-4xl font-bold text-center text-green-800 mb-6">Crop Seed Calculation</h2> <!-- Increased font size -->
+            
+            <div class="flex flex-col md:flex-row items-center mt-4">
+                <!-- User-selected image section -->
+                <div class="w-full md:w-1/2 h-auto mb-4 md:mr-4">
+                    <img id="uploaded-image" src="https://img.freepik.com/free-photo/farm-landscape-cartoon-illustration_23-2151416826.jpg?t=st=1722278900~exp=1722282500~hmac=c1b2133f6ed790abdd4d47b9cdefb29b5e5d4af5a2985562dc2c25b4514b8203&w=740" alt="Upload Image" class="w-full h-auto rounded-md">
+                </div>
+                <div class="flex-grow">
+                    <form method="post" enctype="multipart/form-data" onsubmit="return saveInputValues();"> <!-- Add onsubmit -->
+                        {% csrf_token %}
+                        <label for="image" class="block text-gray-700 text-lg">Select Image:</label>
+                        <div class="relative">
+                            <input type="file" name="image" id="image" required class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" onchange="updateFileName(event)">
+                            <button type="button" class="w-full bg-green-600 text-white py-3 rounded-md hover:bg-green-700 transition duration-200 flex items-center justify-center text-lg">
+                                <span id="file-name">Choose File</span>
+                                <svg class="w-5 h-5 ml-2 " fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h8m-4-4l4 4-4 4"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <label for="density" class="block text-gray-700 text-lg mt-4">Seed Density (seeds/square meter):</label>
+                        <input type="text" name="density" id="density" required class="w-full mt-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-300 text-lg"> <!-- Increased font size -->
+                        
+                        <label for="area" class="block text-gray-700 text-lg mt-4">Area (square meters):</label>
+                        <input type="text" name="area" id="area" required class="w-full mt-1 p-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-green-300 text-lg"> <!-- Increased font size -->
+                        
+                        <button type="submit" class="mt-4 w-full bg-green-600 text-white py-3 rounded-md hover:bg-green-700 transition duration-200 text-lg">Calculate</button> <!-- Increased font size -->
+                    </form>
+                </div>
+            </div>
+            
+            {% if result %}
+                <div class="mt-4 p-3 bg-green-200 rounded-md text-green-800 text-lg">{{ result | safe }}</div> <!-- Increased font size -->
+            {% endif %}
+        </div>
+    </section>
+    <!-- Contact Us Section -->
+            <!-- Contact Us Section -->
+            <section class="container mx-auto my-16 p-6" id="contact">
+                <h2 class="text-4xl font-bold text-center mb-8 text-green-800 drop-shadow-lg">Contact Us</h2>
+                <div class="contact-form max-w-lg mx-auto p-10 rounded-lg shadow-lg"> <!-- Increased max width and padding -->
+                    <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4">
+                        <input type="hidden" name="access_key" value="877f29ad-1ea2-4783-a435-fbc96799c4ed">
+                        
+                        <div>
+                            <label for="name" class="block text-lg font-medium text-black">Name:</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your name" 
+                                class="border border-gray-300 rounded-md p-3 w-full text-lg" required>
+                        </div>
+                    
+                        <div>
+                            <label for="email" class="block text-lg font-medium text-black">Email:</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" 
+                                class="border border-gray-300 rounded-md p-3 w-full text-lg" required>
+                        </div>
+                    
+                        <div>
+                            <label for="message" class="block text-lg font-medium text-black">Message:</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Type your message here" 
+                                class="border border-gray-300 rounded-md p-3 w-full text-lg" required></textarea>
+                        </div>
+                    
+                        <button type="submit" 
+                            class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 px-4 rounded-md transition duration-300 text-lg">
+                            Send Message
+                        </button>
+                    </form>
+                    
+                </div>
+            </section>
+
+    
+    <!-- Footer Section -->
+    <footer class="bg-green-700 text-white text-center p-4 mt-16">
+        <p>&copy; 2024 CropMate. All rights reserved.</p>
+    </footer>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <!-- JavaScript for Card Animation -->
+    
+</html>
+
+
+

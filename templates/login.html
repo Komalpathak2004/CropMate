@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CropMate-Login</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js"></script>
+    <link rel="shortcut icon" href="{% static 'logo.png' %}" type="image/x-icon">
+    <!--Stylesheet-->
+    <style media="screen">
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(to right, #56ab2f, #a8e063); /* Green gradient background */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+        }
+        .container {
+            display: flex;
+            width: 90%;
+            height: 80%;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .left-side {
+            flex: 1;
+            background-image: url('https://i.pinimg.com/originals/c5/c4/9c/c5c49c240501275aa45fc9bf8abce04e.gif'); /* Replace with your large image path */
+            background-size: cover;
+            background-position: center;
+        }
+        .right-side {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #fffacd; /* Light yellow color for the entire right side */
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        form {
+            width: 100%;
+            max-width: 500px; /* Increased max width for the form */
+            padding: 30px;
+            background-color: #fffacd; /* Light yellow background for the form */
+            border-radius: 0; /* Remove border radius */
+            border: none; /* Remove border */
+        }
+        form * {
+            color: #333; /* Dark text color for better contrast */
+            outline: none;
+            border: none;
+        }
+        form h3 {
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 42px;
+            text-align: center;
+            color: #4caf50; /* Green color for farming theme */
+        }
+        label {
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #4caf50; /* Green color for farming theme */
+        }
+        input {
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+            color: #333;
+        }
+        ::placeholder {
+            color: #666;
+        }
+        button {
+            margin-top: 30px;
+            width: 100%;
+            background: linear-gradient(to right, #4caf50, #8bc34a); /* Green gradient */
+            color: #fff;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        p a {
+            color: #4caf50; /* Green color for farming theme */
+        }
+
+        /* Make the form responsive */
+        @media only screen and (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Stack elements vertically */
+                height: auto; /* Allow height to adjust */
+            }
+            .left-side {
+                display: block; /* Show the image on smaller screens */
+                width: 100%; /* Make it take full width */
+                height: 300px; /* Set a fixed height for the image */
+                background-image: url('https://i.pinimg.com/originals/c5/c4/9c/c5c49c240501275aa45fc9bf8abce04e.gif'); /* Keep the background image */
+                background-size: cover; /* Ensure the image covers the div */
+                background-position: center; /* Center the image */
+            }
+            .right-side {
+                width: 100%; /* Full width */
+                height: auto; /* Allow height to adjust */
+                padding: 20px; /* Adjust padding */
+            }
+            form {
+                padding: 20px; /* Adjust form padding */
+                width: 90%; /* Make form width responsive */
+                max-width: none; /* Remove max-width */
+            }
+            .logo {
+                top: 10px; /* Adjust logo position for mobile */
+                left: 10px;
+                width: 40px; /* Adjust logo size for mobile */
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="{% static 'logo.png' %}" alt="MedPulseAI Logo" class="logo">
+    <div class="container">
+        <div class="left-side"></div>
+        <div class="right-side">
+            <form method="post">
+                <h3>Login to CropMate</h3>
+                {% csrf_token %} 
+                <label for="username">Username</label>
+                <input type="text" placeholder="Enter Username" id="username" name="username">
+
+                <label for="password">Password</label>
+                <input type="password" placeholder="Password" id="password" name="pass">
+
+                <button type="submit">Log In</button>
+                <p>Don't Have an Account? <a href="{% url 'signup' %}">Create an account</a></p>
+            </form>
+        </div>
+    </div>
+    <script>
+        let btn = document.querySelector("button")
+    btn.addEventListener("click", function() {
+      iziToast.success({
+        title: 'Login Successful',
+        message: 'Login Successful for MedPulseAI ',
+        position: 'topRight',
+        timeout: 3000, // timeout in milliseconds
+      });
+    })
+    </script>
+</body>
+</html>

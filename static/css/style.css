@@ -1,0 +1,96 @@
+
+        body {
+            background: linear-gradient(to right, #c8e6c9, #a5d6a7);
+            font-family: 'Raleway', sans-serif;
+        }
+        
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .animate-fade {
+            animation: fadeIn 1s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .calc-card {
+            background: linear-gradient(to right, #66bb6a, #43a047);
+            color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .animate-fade-left {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+        
+        .animate-fade-right {
+            opacity: 0;
+            transform: translateX(50px);
+        }
+        
+        /* Contact Form Styles */
+        .contact-form {
+            background: linear-gradient(to right, #66bb6a, #43a047);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: glow 1.5s infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 10px rgba(102, 187, 106, 0.7);
+            }
+            100% {
+                box-shadow: 0 0 20px rgba(102, 187, 106, 1);
+            }
+        }
+        
+        /* Style for transparent navbar */
+        .navbar-transparent {
+            background-color: transparent !important;
+            box-shadow: none;
+        }
+        
+        /* Style for when scrolled */
+        .navbar-scrolled {
+            background-color: rgba(0, 128, 0, 0.8) !important; /* Adjust opacity as needed */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .card {
+                padding: 15px;
+                font-size: 0.9rem;
+            }
+            .contact-form {
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .card {
+                padding: 10px;
+                font-size: 0.8rem;
+            }
+            .contact-form {
+                padding: 10px;
+            }
+        }
+        
