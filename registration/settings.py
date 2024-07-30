@@ -28,7 +28,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1','cropmate-8bgm.onrender.com']
 
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://cropmate-8bgm.onrender.com',
+]
 # Application definition
 
 INSTALLED_APPS = [
