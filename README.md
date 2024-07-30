@@ -20,7 +20,7 @@ Ensure you have Python installed on your machine.
 
 Clone the repository:
 ```
-git clone https://github.com/komalpathak2004/CropMate.git
+git clone https://github.com/Komalpathak2004/CropMate.git
 cd CropMate
 Make sure to install any required packages as specified in your requirements.txt file:
 pip install -r requirements.txt
