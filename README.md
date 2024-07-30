@@ -20,7 +20,7 @@ Ensure you have Python installed on your machine.
 
 Clone the repository:
 ```
-git clone https://github.com/NayaKunal30/CropMate.git
+git clone https://github.com/komalpathak2004/CropMate.git
 cd CropMate
 Make sure to install any required packages as specified in your requirements.txt file:
 pip install -r requirements.txt
@@ -46,4 +46,4 @@ Education: Bridge theory and practice in agricultural studies.
 <img src="https://www.animatedimages.org/data/media/562/animated-line-image-0184.gif" width="1920" />
 
 📞 Contact
-For any inquiries or feedback, please reach out to us at kunalnayak3004@gmail.com or open an issue in this repository! 📬
+For any inquiries or feedback, please reach out to us at pathakkomal04@gmail.com or open an issue in this repository! 📬
